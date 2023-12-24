@@ -32,6 +32,7 @@ export const FormInputField = () => {
   });
   return (
     <div>
+      <h1>Multiple input fields implemented in a form.</h1>
       <InputField
         label="Email"
         fieldName="email"
@@ -68,6 +69,8 @@ export const FormInputValidation = () => {
 
   return (
     <div>
+      <h1>Form with validation enabled.</h1>
+
       <InputField
         label="Email"
         fieldName="email"
