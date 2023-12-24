@@ -26,7 +26,7 @@ export const SingleInput = () => {
 };
 
 export const FormInputField = () => {
-  const [fieldState, setFieldState] = useState({
+  const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
@@ -34,20 +34,66 @@ export const FormInputField = () => {
     <div>
       <InputField
         label="Email"
+        fieldName="email"
         placeholder="Email here..."
         inputType="text"
-        value={fieldState.email}
-        stateHandler={setFieldState}
+        value={formState.email}
+        stateHandler={setFormState}
         handleChange={handleInputChange}
       />
 
       <InputField
         label="Password"
+        fieldName="password"
         placeholder="Password here..."
         inputType="password"
-        value={fieldState.email}
-        stateHandler={setFieldState}
+        value={formState.password}
+        stateHandler={setFormState}
         handleChange={handleInputChange}
+      />
+    </div>
+  );
+};
+
+export const FormInputValidation = () => {
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [validationState, setValidationState] = useState({
+    email: "",
+    password: "",
+  });
+
+  return (
+    <div>
+      <InputField
+        label="Email"
+        fieldName="email"
+        placeholder="Email here..."
+        inputType="text"
+        value={formState.email}
+        stateHandler={setFormState}
+        handleChange={handleInputChange}
+        isFormValid={validationState.email}
+        validation={(value: string) => /@.*\../.test(value)}
+        setValidationState={setValidationState}
+        errorMessage="Please input a correct email."
+      />
+
+      <InputField
+        label="Password"
+        fieldName="password"
+        placeholder="Password here..."
+        inputType="password"
+        value={formState.password}
+        stateHandler={setFormState}
+        handleChange={handleInputChange}
+        isFormValid={validationState.password}
+        validation={(value: string) => value.length > 8}
+        setValidationState={setValidationState}
+        errorMessage="Please enter a minimum of 8 characters."
       />
     </div>
   );
